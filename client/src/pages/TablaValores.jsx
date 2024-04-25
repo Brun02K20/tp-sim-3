@@ -1,7 +1,8 @@
+/* eslint-disable react/prop-types */
 import React from "react";
 import { Table } from "react-bootstrap";
 
-const TablaValores = () => {
+const TablaValores = ({ tabla }) => {
   return (
     <>
       <Table responsive striped bordered hover>
@@ -15,6 +16,18 @@ const TablaValores = () => {
             <th>Clientes que Compran</th>
           </tr>
         </thead>
+        <tbody>
+          {tabla.map((e) => (
+            <tr key={e.respuesta}>
+              <td>{e.respuesta}</td>
+              <td>{e.recuerdaRnd}</td>
+              <td>{e.recuerda}</td>
+              <td>{e.compraRnd}</td>
+              <td>{e.compra}</td>
+              <td>{e.acumulador}</td>
+            </tr>
+          ))}
+        </tbody>
       </Table>
     </>
   );

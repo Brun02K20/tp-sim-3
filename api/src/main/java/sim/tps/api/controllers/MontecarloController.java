@@ -18,7 +18,7 @@ public class MontecarloController {
 
     private final MontecarloService montecarloService;
 
-    @GetMapping("/simular")
+    @PostMapping("/simular")
     public ResponseEntity<?> simular(@RequestBody RequestDto request) {
         try {
             return ResponseEntity.ok(montecarloService.simular(request));

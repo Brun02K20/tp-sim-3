@@ -1,11 +1,13 @@
+/* eslint-disable react/prop-types */
 import React, { useEffect, useState } from "react";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import { useForm, Controller } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { ProbabilidadesInput } from "../components/ProbabilidadesInput";
 import axios from "axios";
+import { simular } from "../api/api";
 
-const DataForm = () => {
+const DataForm = ({ respuestas, setRespuestas }) => {
   const {
     reset,
     control,
@@ -14,7 +16,7 @@ const DataForm = () => {
     formState: { errors },
   } = useForm();
   const navigate = useNavigate();
-  const [respuestas, setRespuestas] = useState();
+  const [error, setError] = useState("");
 
   useEffect(() => {
     console.log(respuestas);
@@ -33,12 +35,14 @@ const DataForm = () => {
     data.primer_rta = parseInt(data.primer_rta);
     data.cant_a_mostrar = parseInt(data.cant_a_mostrar);
 
-    const response = await axios.get(
-      `http://localhost:8080/montecarlo/simular`,
-      data
-    );
-
-    setRespuestas(response.data);
+    const response = await simular(data);
+    if (typeof response === "string") {
+      setError(response);
+      return;
+    }
+    setError("");
+    setRespuestas(response);
+    navigate("/tabla");
   };
 
   return (
@@ -255,8 +259,8 @@ const DataForm = () => {
                     message: "El valor mínimo permitido es 2",
                   },
                   max: {
-                    value: 400,
-                    message: "El valor máximo es 400",
+                    value: 10000,
+                    message: "El valor máximo es 10000",
                   },
                 }}
                 render={({ field }) => (
@@ -274,6 +278,7 @@ const DataForm = () => {
           )}
         </Col>
       </Row>
+      {error && <p>{error}</p>}
       <Button
         style={{
           border: "none",

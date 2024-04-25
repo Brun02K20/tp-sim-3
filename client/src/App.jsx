@@ -13,12 +13,18 @@ import {
 import { TablaValores } from "./pages/TablaValores";
 
 function App() {
+  const [respuestas, setRespuestas] = useState();
   return (
     <>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<DataForm />} />
-          <Route path="/tabla" element={<TablaValores />} />
+          <Route
+            path="/"
+            element={
+              <DataForm respuestas={respuestas} setRespuestas={setRespuestas} />
+            }
+          />
+          <Route path="/tabla" element={<TablaValores tabla={respuestas} />} />
           <Route path="/*" element={<Navigate to="/" replace />} />
         </Routes>
       </BrowserRouter>
