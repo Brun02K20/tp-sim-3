@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { ProbabilidadesInput } from "../components/ProbabilidadesInput";
 import axios from "axios";
 import { simular } from "../api/api";
+import "../App.css";
 
 const DataForm = ({ respuestas, setRespuestas }) => {
   const {
@@ -47,249 +48,244 @@ const DataForm = ({ respuestas, setRespuestas }) => {
 
   return (
     <>
-      <h3 className="text-center text-decoration-underline">PROBABILIDADES</h3>
-      <></>
-      <Row className="align-items-start">
-        {/* Primera columna */}
-        <Col>
-          <h4 className="text-center">Recuerda?</h4>
-          <ProbabilidadesInput
-            id="input1"
-            label="SI"
-            campo="sirecuerda"
-            control={control}
-            errors={errors}
-          />
+        <div className="card">
+            <h3>Probabilidades</h3>
+            <></>
+            <Row className="align-items-start">
+                {/* Primera columna */}
+                <Col>
+                    <h4 className="text-center">Recuerda</h4>
+                    <ProbabilidadesInput
+                        id="input1"
+                        label="SI"
+                        campo="sirecuerda"
+                        control={control}
+                        errors={errors}
+                    />
 
-          <ProbabilidadesInput
-            id="input2"
-            label="NO"
-            campo="norecuerda"
-            control={control}
-            errors={errors}
-          />
-        </Col>
+                    <ProbabilidadesInput
+                        id="input2"
+                        label="NO"
+                        campo="norecuerda"
+                        control={control}
+                        errors={errors}
+                    />
+                </Col>
 
-        {/* Segunda columna */}
-        <Col>
-          <h4 className="text-center">Compra si Recuerda</h4>
-          <ProbabilidadesInput
-            id="input3"
-            label="Definitivamente NO"
-            campo="cpra_si_def_no"
-            control={control}
-            errors={errors}
-          />
+                {/* Segunda columna */}
+                <Col>
+                    <h4 className="text-center">Compra si recuerda</h4>
+                    <ProbabilidadesInput
+                        id="input3"
+                        label="Definitivamente NO"
+                        campo="cpra_si_def_no"
+                        control={control}
+                        errors={errors}
+                    />
 
-          <ProbabilidadesInput
-            id="input4"
-            label="Dudoso"
-            campo="cpra_si_dudoso"
-            control={control}
-            errors={errors}
-          />
+                    <ProbabilidadesInput
+                        id="input4"
+                        label="Dudoso"
+                        campo="cpra_si_dudoso"
+                        control={control}
+                        errors={errors}
+                    />
 
-          <ProbabilidadesInput
-            id="input5"
-            label="Definitivamente SI"
-            campo="cpra_si_def_si"
-            control={control}
-            errors={errors}
-          />
-        </Col>
+                    <ProbabilidadesInput
+                        id="input5"
+                        label="Definitivamente SI"
+                        campo="cpra_si_def_si"
+                        control={control}
+                        errors={errors}
+                    />
+                </Col>
 
-        {/* Tercera columna */}
-        <Col>
-          <h4 className="text-center">Compra si NO Recuerda</h4>
-          <ProbabilidadesInput
-            id="input6"
-            label="Definitivamente NO"
-            campo="cpra_no_def_no"
-            control={control}
-            errors={errors}
-          />
+                {/* Tercera columna */}
+                <Col>
+                    <h4 className="text-center">Compra si no recuerda</h4>
+                    <ProbabilidadesInput
+                        id="input6"
+                        label="Definitivamente NO"
+                        campo="cpra_no_def_no"
+                        control={control}
+                        errors={errors}
+                    />
 
-          <ProbabilidadesInput
-            id="input7"
-            label="Dudoso"
-            campo="cpra_no_dudoso"
-            control={control}
-            errors={errors}
-          />
+                    <ProbabilidadesInput
+                        id="input7"
+                        label="Dudoso"
+                        campo="cpra_no_dudoso"
+                        control={control}
+                        errors={errors}
+                    />
 
-          <ProbabilidadesInput
-            id="input8"
-            label="Definitivamente SI"
-            campo="cpra_no_def_si"
-            control={control}
-            errors={errors}
-          />
-        </Col>
-      </Row>
-      <hr />
-      <h3 className="text-center text-decoration-underline">SIMULACIÓN</h3>
-      <Row className="align-items-start">
-        <Col>
-          <Form.Group controlId="input9" style={{ margin: "8px" }}>
-            <div className="d-flex align-items-center">
-              <Form.Label
-                className="mr-2"
-                style={{
-                  marginRight: "12px",
-                  width: "500px",
-                  textAlign: "left",
-                }}
-              >
-                Cantidad de respuestas
-              </Form.Label>
-              <Controller
-                name="n"
-                control={control}
-                rules={{
-                  pattern: {
-                    value: /^[0-9]+$/,
-                    message: "Solo se permiten números positivos en este campo",
-                  },
-                  required: {
-                    value: true,
-                    message: "Este campo es requerido",
-                  },
-                  min: {
-                    value: 100000,
-                    message: "El valor mínimo permitido es 100000",
-                  },
-                  max: {
-                    value: 1000000,
-                    message: "El valor máximo es 1000000",
-                  },
-                }}
-                render={({ field }) => (
-                  <Form.Control type="number" {...field} />
-                )}
-              />
-            </div>
-            {errors.n && (
-              <span
-                style={{
-                  marginRight: "300px",
-                  color: "red",
-                  fontWeight: "600",
-                }}
-              >
+                    <ProbabilidadesInput
+                        id="input8"
+                        label="Definitivamente SI"
+                        campo="cpra_no_def_si"
+                        control={control}
+                        errors={errors}
+                    />
+                </Col>
+            </Row>
+            <hr/>
+            <h3>Simulación</h3>
+            <Row className="align-items-start">
+                <Col>
+                    <Form.Group controlId="input9" style={{margin: "8px"}}>
+                        <div className="d-flex align-items-center">
+                            <Form.Label
+                                className="mr-2"
+                                style={{
+                                    marginRight: "12px",
+                                    width: "500px",
+                                    textAlign: "left",
+                                }}
+                            >
+                                Cantidad de respuestas
+                            </Form.Label>
+                            <Controller
+                                name="n"
+                                control={control}
+                                rules={{
+                                    pattern: {
+                                        value: /^[0-9]+$/,
+                                        message: "Solo se permiten números positivos en este campo",
+                                    },
+                                    required: {
+                                        value: true,
+                                        message: "Este campo es requerido",
+                                    },
+                                    max: {
+                                        value: 100000000,
+                                        message: "El valor máximo es 100000000",
+                                    },
+                                }}
+                                render={({field}) => (
+                                    <Form.Control type="number" {...field} />
+                                )}
+                            />
+                        </div>
+                        {errors.n && (
+                            <span
+                                style={{
+                                    color: "red",
+                                    fontWeight: "600",
+                                }}
+                            >
                 {errors.n.message}
               </span>
-            )}
-          </Form.Group>
-          <Form.Group controlId="input10" style={{ margin: "8px" }}>
-            <div className="d-flex align-items-center">
-              <Form.Label
-                className="mr-2"
-                style={{
-                  marginRight: "12px",
-                  width: "500px",
-                  textAlign: "left",
-                }}
-              >
-                Número de primer respuesta
-              </Form.Label>
-              <Controller
-                name="primer_rta"
-                control={control}
-                rules={{
-                  pattern: {
-                    value: /^[0-9]+$/,
-                    message: "Solo se permiten números positivos en este campo",
-                  },
-                  required: {
-                    value: true,
-                    message: "Este campo es requerido",
-                  },
-                  min: {
-                    value: 1,
-                    message: "El valor mínimo permitido es 1",
-                  },
-                  max: {
-                    value: 900000,
-                    message: "El valor máximo es 900000",
-                  },
-                }}
-                render={({ field }) => (
-                  <Form.Control type="number" {...field} />
-                )}
-              />
-            </div>
-            {errors.primer_rta && (
-              <span
-                style={{
-                  marginRight: "300px",
-                  color: "red",
-                  fontWeight: "600",
-                }}
-              >
+                        )}
+                    </Form.Group>
+                    <Form.Group controlId="input10" style={{margin: "8px"}}>
+                        <div className="d-flex align-items-center">
+                            <Form.Label
+                                className="mr-2"
+                                style={{
+                                    marginRight: "12px",
+                                    width: "500px",
+                                    textAlign: "left",
+                                }}
+                            >
+                                Número de primer respuesta
+                            </Form.Label>
+                            <Controller
+                                name="primer_rta"
+                                control={control}
+                                rules={{
+                                    pattern: {
+                                        value: /^[0-9]+$/,
+                                        message: "Solo se permiten números positivos en este campo",
+                                    },
+                                    required: {
+                                        value: true,
+                                        message: "Este campo es requerido",
+                                    },
+                                    min: {
+                                        value: 1,
+                                        message: "El valor mínimo permitido es 1",
+                                    }
+                                }}
+                                render={({field}) => (
+                                    <Form.Control type="number" {...field} />
+                                )}
+                            />
+                        </div>
+                        {errors.primer_rta && (
+                            <span
+                                style={{
+                                    color: "red",
+                                    fontWeight: "600",
+                                }}
+                            >
                 {errors.primer_rta.message}
               </span>
-            )}
-          </Form.Group>
-          <Form.Group controlId="input11" style={{ margin: "8px" }}>
-            <div className="d-flex align-items-center">
-              <Form.Label
-                className="mr-2"
-                style={{
-                  marginRight: "12px",
-                  width: "500px",
-                  textAlign: "left",
-                }}
-              >
-                Cantidad de respuestas a mostrar
-              </Form.Label>
-              <Controller
-                name="cant_a_mostrar"
-                control={control}
-                rules={{
-                  pattern: {
-                    value: /^[0-9]+$/,
-                    message: "Solo se permiten números positivos en este campo",
-                  },
-                  required: {
-                    value: true,
-                    message: "Este campo es requerido",
-                  },
-                  min: {
-                    value: 2,
-                    message: "El valor mínimo permitido es 2",
-                  },
-                  max: {
-                    value: 10000,
-                    message: "El valor máximo es 10000",
-                  },
-                }}
-                render={({ field }) => (
-                  <Form.Control type="number" {...field} />
-                )}
-              />
-            </div>
-          </Form.Group>
-          {errors.cant_a_mostrar && (
-            <span
-              style={{ marginRight: "300px", color: "red", fontWeight: "600" }}
-            >
+                        )}
+                    </Form.Group>
+                    <Form.Group controlId="input11" style={{margin: "8px"}}>
+                        <div className="d-flex align-items-center">
+                            <Form.Label
+                                className="mr-2"
+                                style={{
+                                    marginRight: "12px",
+                                    width: "500px",
+                                    textAlign: "left",
+                                }}
+                            >
+                                Cantidad de respuestas a mostrar
+                            </Form.Label>
+                            <Controller
+                                name="cant_a_mostrar"
+                                control={control}
+                                rules={{
+                                    pattern: {
+                                        value: /^[0-9]+$/,
+                                        message: "Solo se permiten números positivos en este campo",
+                                    },
+                                    required: {
+                                        value: true,
+                                        message: "Este campo es requerido",
+                                    },
+                                    min: {
+                                        value: 1,
+                                        message: "El valor mínimo permitido es 1",
+                                    },
+                                    max: {
+                                        value: 100000,
+                                        message: "El valor máximo es 100000",
+                                    },
+                                }}
+                                render={({field}) => (
+                                    <Form.Control type="number" {...field} />
+                                )}
+                            />
+                        </div>
+                    </Form.Group>
+                    {errors.cant_a_mostrar && (
+                        <span
+                            style={{color: "red", fontWeight: "600"}}
+                        >
               {errors.cant_a_mostrar.message}
             </span>
-          )}
-        </Col>
-      </Row>
-      {error && <p>{error}</p>}
-      <Button
-        style={{
-          border: "none",
-        }}
-        variant="success"
-        onClick={handleSubmit(onSubmit)}
-      >
-        Simular
-      </Button>
+                    )}
+                </Col>
+            </Row>
+            {error &&
+                <p style={{color: "red", fontWeight: "600"}}>
+                    {error}
+                </p>
+            }
+            <Button
+                className="btn"
+                variant="success"
+                onClick={handleSubmit(onSubmit)}
+            >
+                Simular
+            </Button>
+        </div>
+
     </>
   );
 };
 
-export { DataForm };
+export {DataForm};

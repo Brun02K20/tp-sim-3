@@ -1,36 +1,52 @@
 /* eslint-disable react/prop-types */
 import React from "react";
+import { FixedSizeList as List } from 'react-window';
 import { Table } from "react-bootstrap";
 
 const TablaValores = ({ tabla }) => {
-  return (
-    <>
-      <Table responsive striped bordered hover>
-        <thead>
-          <tr>
-            <th>Respuesta</th>
-            <th>RND Recuerda</th>
-            <th>Recuerda</th>
-            <th>RND Compra</th>
-            <th>Compra</th>
-            <th>Clientes que Compran</th>
-          </tr>
-        </thead>
-        <tbody>
-          {tabla.map((e) => (
-            <tr key={e.respuesta}>
-              <td>{e.respuesta}</td>
-              <td>{e.recuerdaRnd}</td>
-              <td>{e.recuerda}</td>
-              <td>{e.compraRnd}</td>
-              <td>{e.compra}</td>
-              <td>{e.acumulador}</td>
-            </tr>
-          ))}
-        </tbody>
-      </Table>
-    </>
-  );
+    // Definimos la fila adicional
+    const Encabezado = () => (
+        <tr>
+            <th style={{ width: "15%" }}>Respuesta</th>
+            <th style={{ width: "15%" }}>RND Recuerda</th>
+            <th style={{ width: "10%" }}>Recuerda</th>
+            <th style={{ width: "15%" }}>RND Compra</th>
+            <th style={{ width: "25%" }}>Compra</th>
+            <th style={{ width: "20%" }}>Clientes que Compran</th>
+        </tr>
+    );
+
+    const Row = ({ index, style }) => {
+        const e = tabla[index];
+        return (
+            <div style={{ ...style, display: "flex" }}>
+                <div style={{ width: "15%" }}>{e.respuesta}</div>
+                <div style={{ width: "15%" }}>{e.recuerdaRnd.toFixed(4)}</div>
+                <div style={{ width: "12%" }}>{e.recuerda}</div>
+                <div style={{ width: "18%" }}>{e.compraRnd.toFixed(4)}</div>
+                <div style={{ width: "25%" }}>{e.compra}</div>
+                <div style={{ width: "20%" }}>{e.acumulador}</div>
+            </div>
+        );
+    };
+
+    return (
+        <div style={{ height: 500, width: 1000 }}>
+            <Table responsive striped bordered hover>
+                <thead>
+                <Encabezado /> {/* Agregamos el encabezado antes de la lista */}
+                </thead>
+            </Table>
+            <List
+                height={400}
+                itemCount={tabla.length}
+                itemSize={50}
+                width="100%"
+            >
+                {Row}
+            </List>
+        </div>
+    );
 };
 
 export { TablaValores };

@@ -17,25 +17,17 @@ const ProbabilidadesInput = ({ control, errors, id, label, campo }) => {
           name={campo}
           control={control}
           rules={{
-            //   pattern: {
-            //     value: /^(\d{1,2},\d{0,2}|\d{1,2})$/,
-            //     message: "Solo se permiten números positivos en este campo",
-            //   },
+            pattern: {
+                value: /^(\d{1,2}(\.\d*)?|100(\.0*)?)$/,
+                message: "Porcentaje inválido"
+            },
             required: {
               value: true,
               message: "Este campo es requerido",
-            },
-            min: {
-              value: 1,
-              message: "El valor mínimo permitido es 1",
-            },
-            max: {
-              value: 99,
-              message: "El valor máximo es 99",
-            },
+            }
           }}
           render={({ field }) => (
-            <Form.Control type="number" {...field} step="0.01" />
+            <Form.Control type="number" {...field} />
           )}
         />
       </div>
