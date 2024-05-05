@@ -27,7 +27,7 @@ const ProbabilidadesInput = ({ control, errors, id, label, campo }) => {
             }
           }}
           render={({ field }) => (
-            <Form.Control type="number" {...field} />
+            <Form.Control type="number" {...field} placeholder="%"/>
           )}
         />
       </div>

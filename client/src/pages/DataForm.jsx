@@ -57,7 +57,7 @@ const DataForm = ({ respuestas, setRespuestas }) => {
                     <h4 className="text-center">Recuerda</h4>
                     <ProbabilidadesInput
                         id="input1"
-                        label="SI"
+                        label="Sí"
                         campo="sirecuerda"
                         control={control}
                         errors={errors}
@@ -65,7 +65,7 @@ const DataForm = ({ respuestas, setRespuestas }) => {
 
                     <ProbabilidadesInput
                         id="input2"
-                        label="NO"
+                        label="No"
                         campo="norecuerda"
                         control={control}
                         errors={errors}
@@ -77,7 +77,7 @@ const DataForm = ({ respuestas, setRespuestas }) => {
                     <h4 className="text-center">Compra si recuerda</h4>
                     <ProbabilidadesInput
                         id="input3"
-                        label="Definitivamente NO"
+                        label="Definitivamente no"
                         campo="cpra_si_def_no"
                         control={control}
                         errors={errors}
@@ -93,7 +93,7 @@ const DataForm = ({ respuestas, setRespuestas }) => {
 
                     <ProbabilidadesInput
                         id="input5"
-                        label="Definitivamente SI"
+                        label="Definitivamente sí"
                         campo="cpra_si_def_si"
                         control={control}
                         errors={errors}
@@ -105,7 +105,7 @@ const DataForm = ({ respuestas, setRespuestas }) => {
                     <h4 className="text-center">Compra si no recuerda</h4>
                     <ProbabilidadesInput
                         id="input6"
-                        label="Definitivamente NO"
+                        label="Definitivamente no"
                         campo="cpra_no_def_no"
                         control={control}
                         errors={errors}
@@ -121,7 +121,7 @@ const DataForm = ({ respuestas, setRespuestas }) => {
 
                     <ProbabilidadesInput
                         id="input8"
-                        label="Definitivamente SI"
+                        label="Definitivamente sí"
                         campo="cpra_no_def_si"
                         control={control}
                         errors={errors}
