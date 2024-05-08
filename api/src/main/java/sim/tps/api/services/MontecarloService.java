@@ -25,6 +25,7 @@ public class MontecarloService {
 
         if (i > n) throw new IllegalArgumentException("El número de la primera respuesta es demasiado grande");
 
+        // Este for simula una respuesta y muestra los intervalos de i a i+j
         for (int iteracion = 1; iteracion < n + 1; iteracion++) {
             experimento.simularRespuesta();
             if (i <= iteracion && iteracion <= i + j || iteracion == n) {

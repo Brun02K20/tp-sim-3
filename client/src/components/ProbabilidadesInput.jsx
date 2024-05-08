@@ -3,7 +3,7 @@ import React from "react";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import { useForm, Controller } from "react-hook-form";
 
-const ProbabilidadesInput = ({ control, errors, id, label, campo }) => {
+const ProbabilidadesInput = ({ control, errors, id, label, campo, nro }) => {
   return (
     <Form.Group controlId={id} style={{ margin: "8px" }}>
       <div className="d-flex align-items-center">
@@ -21,13 +21,13 @@ const ProbabilidadesInput = ({ control, errors, id, label, campo }) => {
                 value: /^(\d{1,2}(\.\d*)?|100(\.0*)?)$/,
                 message: "Porcentaje inválido"
             },
-            required: {
-              value: true,
-              message: "Este campo es requerido",
-            }
+              required: {
+                value: true,
+                  message: "Este campo es requerido"
+              }
           }}
           render={({ field }) => (
-            <Form.Control type="number" {...field} placeholder="%"/>
+            <Form.Control type="number" {...field} placeholder="%" />
           )}
         />
       </div>

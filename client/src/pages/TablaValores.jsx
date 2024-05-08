@@ -2,6 +2,7 @@
 import React from "react";
 import { FixedSizeList as List } from 'react-window';
 import { Table } from "react-bootstrap";
+import tab from "bootstrap/js/src/tab.js";
 
 const TablaValores = ({ tabla }) => {
     // Definimos la fila adicional
@@ -30,6 +31,8 @@ const TablaValores = ({ tabla }) => {
         );
     };
 
+    const probabilidad = tabla[ tabla.length -1].acumulador / tabla[ tabla.length -1].respuesta
+
     return (
         <div style={{ height: 500, width: 1000 }}>
             <Table responsive striped bordered hover>
@@ -45,6 +48,12 @@ const TablaValores = ({ tabla }) => {
             >
                 {Row}
             </List>
+
+            <div>
+                <p>
+                    La probabilidad de que el cliente compre el producto es de: {Math.round(probabilidad * 100, 2) }%
+                </p>
+            </div>
         </div>
     );
 };

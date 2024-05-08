@@ -15,7 +15,18 @@ const DataForm = ({ respuestas, setRespuestas }) => {
     handleSubmit,
     register,
     formState: { errors },
-  } = useForm();
+  } = useForm({
+      defaultValues: {
+          sirecuerda: 40,
+          norecuerda: 60,
+          cpra_si_def_no: 30,
+          cpra_si_dudoso: 30,
+          cpra_si_def_si: 40,
+          cpra_no_def_no: 50,
+          cpra_no_dudoso: 40,
+          cpra_no_def_si: 10
+      }
+  });
   const navigate = useNavigate();
   const [error, setError] = useState("");
 
@@ -24,6 +35,7 @@ const DataForm = ({ respuestas, setRespuestas }) => {
   }, [respuestas]);
 
   const onSubmit = async (data) => {
+      console.log(data)
     data.sirecuerda = parseFloat(data.sirecuerda);
     data.norecuerda = parseFloat(data.norecuerda);
     data.cpra_si_def_no = parseFloat(data.cpra_si_def_no);
@@ -61,6 +73,7 @@ const DataForm = ({ respuestas, setRespuestas }) => {
                         campo="sirecuerda"
                         control={control}
                         errors={errors}
+                        nro={40}
                     />
 
                     <ProbabilidadesInput
@@ -69,6 +82,7 @@ const DataForm = ({ respuestas, setRespuestas }) => {
                         campo="norecuerda"
                         control={control}
                         errors={errors}
+                        nro={60}
                     />
                 </Col>
 
@@ -81,6 +95,7 @@ const DataForm = ({ respuestas, setRespuestas }) => {
                         campo="cpra_si_def_no"
                         control={control}
                         errors={errors}
+                        nro={30}
                     />
 
                     <ProbabilidadesInput
@@ -89,6 +104,7 @@ const DataForm = ({ respuestas, setRespuestas }) => {
                         campo="cpra_si_dudoso"
                         control={control}
                         errors={errors}
+                        nro={30}
                     />
 
                     <ProbabilidadesInput
@@ -97,6 +113,7 @@ const DataForm = ({ respuestas, setRespuestas }) => {
                         campo="cpra_si_def_si"
                         control={control}
                         errors={errors}
+                        nro={40}
                     />
                 </Col>
 
@@ -109,6 +126,7 @@ const DataForm = ({ respuestas, setRespuestas }) => {
                         campo="cpra_no_def_no"
                         control={control}
                         errors={errors}
+                        nro={50}
                     />
 
                     <ProbabilidadesInput
@@ -117,6 +135,7 @@ const DataForm = ({ respuestas, setRespuestas }) => {
                         campo="cpra_no_dudoso"
                         control={control}
                         errors={errors}
+                        nro={40}
                     />
 
                     <ProbabilidadesInput
@@ -125,6 +144,7 @@ const DataForm = ({ respuestas, setRespuestas }) => {
                         campo="cpra_no_def_si"
                         control={control}
                         errors={errors}
+                        nro={10}
                     />
                 </Col>
             </Row>
