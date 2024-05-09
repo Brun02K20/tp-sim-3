@@ -16,7 +16,7 @@ public class Experimento {
         this.r = r;
         this.c = List.of(c1, c2);
         this.generador = new Random();
-        this.vectorEstado = new VectorEstado(0, 0f, "", 0f, "", 0);
+        this.vectorEstado = new VectorEstado(0, 0f, "", 0f, "", 0, 0);
     }
 
     // parseo de int a cadena de caracteres
@@ -52,6 +52,7 @@ public class Experimento {
                 .compraRnd(compraRnd)
                 .compra(aString(compra, new String[]{"Definitivamente sí", "Dudoso", "Definitivamente no"}))
                 .acumulador(compra == 0 ? acumulador + 1 : acumulador)
+                .probabilidad(Math.round(((float) (compra == 0 ? acumulador + 1 : acumulador) / (this.vectorEstado.getRespuesta() + 1)) * 100))
         .build();
     }
 }

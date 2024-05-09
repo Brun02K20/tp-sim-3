@@ -16,4 +16,5 @@ public class VectorEstado {
     private float compraRnd;
     private String compra;
     private int acumulador;
+    private float probabilidad;
 }

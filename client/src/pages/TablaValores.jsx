@@ -14,6 +14,7 @@ const TablaValores = ({ tabla }) => {
             <th style={{ width: "15%" }}>RND Compra</th>
             <th style={{ width: "25%" }}>Compra</th>
             <th style={{ width: "20%" }}>Clientes que Compran</th>
+            <th style={{ width: "20%" }}>Probabilidad</th>
         </tr>
     );
 
@@ -27,6 +28,7 @@ const TablaValores = ({ tabla }) => {
                 <div style={{ width: "18%" }}>{e.compraRnd.toFixed(4)}</div>
                 <div style={{ width: "25%" }}>{e.compra}</div>
                 <div style={{ width: "20%" }}>{e.acumulador}</div>
+                <div style={{ width: "20%" }}>{e.probabilidad + "%"}</div>
             </div>
         );
     };
